@@ -1,0 +1,41 @@
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+    container:{
+        flex:1,
+        margin:10,
+        backgroundColor:'white',
+        flexDirection:'row',
+        padding:10,
+        justifyContent:'space-between'
+    },
+    user_text:{
+        color:'black',
+        fontSize:16,
+        fontStyle:'italic',
+        marginLeft:10
+    },
+    innercontainer:{
+        flexDirection:'row'
+    },
+    buttoncontainer:{
+        flexDirection:'row',
+        marginRight:10
+    },
+    acceptbutton:{
+        backgroundColor:'#000080',
+        padding:5,
+        marginRight:10,
+        borderRadius:4
+    },
+    button_text:{
+        color:'white',
+        fontWeight:'bold'
+    },
+    rejectbutton:{
+        backgroundColor:'tomato',
+        padding:5,
+        marginRight:5,
+        borderRadius:4
+    }
+})
