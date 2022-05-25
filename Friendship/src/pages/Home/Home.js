@@ -30,7 +30,9 @@ const Home = (props) => {
             <FontAwesome5 name="house-user" size={30} color='tomato'  />
             <FontAwesome5 name="user-plus" size={30} color='gray' 
             onPress={() => props.navigation.navigate('FriendshipRequestScreen',{usermail:usermail})}  />
-            <FontAwesome5 name="user-friends" size={30} color='gray'  />
+            <FontAwesome5 name="user-friends" size={30} color='gray' 
+            onPress={() => props.navigation.navigate('FriendsScreen',{usermail:usermail})}
+            />
             </View>
             <FlatList
                 data={users}

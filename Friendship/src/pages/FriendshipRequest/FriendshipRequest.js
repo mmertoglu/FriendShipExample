@@ -24,8 +24,8 @@ const FriendshipRequest = (props) => {
 
     const handleAccept = (addedUserId) => {
         database().ref('users/'+usermail+'/friends/'+addedUserId).set(addedUserId)
-        const newList = addedUsers.filter(item => item.id != addedUserId)
-        setAddedUsers(newList)
+         database().ref('/users/'+usermail+'/addedyou/'+addedUserId).remove();
+        
     }
     const handleReject = (addeduserId) => {
         const newTodos = addedUsers.filter(item => item.id != addeduserId)
@@ -42,7 +42,9 @@ const FriendshipRequest = (props) => {
               onPress={() => props.navigation.navigate('HomeScreen')} />
             <FontAwesome5 name="user-plus" size={30} color='tomato' 
             />
-            <FontAwesome5 name="user-friends" size={30} color='gray'  />
+            <FontAwesome5 name="user-friends" size={30} color='gray'
+             onPress={() => props.navigation.navigate('FriendsScreen',)}
+            />
             </View>
             <Text>Users Added you</Text>
             {addedUsers ? 

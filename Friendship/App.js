@@ -4,7 +4,7 @@ import {View,Text,StyleSheet} from 'react-native'
 import LoginScreen from './src/pages/LoginScreen/LoginScreen';
 import Home from './src/pages/Home/Home';
 import FriendshipRequest from './src/pages/FriendshipRequest/FriendshipRequest';
-
+import Friends from './src/pages/Friends/Friends';
 import {NavigationContainer} from '@react-navigation/native'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
@@ -19,6 +19,7 @@ const App = () => {
         <Stack.Screen name='LoginScreen' component={LoginScreen} />
         <Stack.Screen name='HomeScreen' component={Home} />
         <Stack.Screen name='FriendshipRequestScreen' component={FriendshipRequest} />
+        <Stack.Screen name='FriendsScreen' component={Friends} />
       </Stack.Navigator>
     </NavigationContainer>
   )
