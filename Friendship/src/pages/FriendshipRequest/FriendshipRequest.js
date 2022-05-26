@@ -11,7 +11,7 @@ const FriendshipRequest = (props) => {
     const [addedUsers,setAddedUsers] = React.useState([])
     const usermail = auth().currentUser.email.split('@', 1).toString()
     React.useEffect(() => {
-        database().ref('users/'+usermail+'/addedyou/').once('value', snapshot => {
+        database().ref('users/'+usermail+'/addedyou/').on('value', snapshot => {
             console.log(usermail)
             console.log(snapshot.val())
             const newContentData = snapshot.val();
@@ -24,7 +24,9 @@ const FriendshipRequest = (props) => {
 
     const handleAccept = (addedUserId) => {
         database().ref('users/'+usermail+'/friends/'+addedUserId).set(addedUserId)
-         database().ref('/users/'+usermail+'/addedyou/'+addedUserId).remove();
+        const newTodos = addedUsers.filter(item => item.id != addedUserId)
+        setAddedUsers(newTodos)
+        database().ref('/users/'+usermail+'/addedyou/'+addedUserId).remove();
         
     }
     const handleReject = (addeduserId) => {

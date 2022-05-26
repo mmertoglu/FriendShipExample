@@ -11,7 +11,7 @@ const Home = (props) => {
     
     const usermail = auth().currentUser.email.split('@', 1).toString()
     React.useEffect(() => {
-        database().ref('users').once('value', snapshot => {
+        database().ref('users').on('value', snapshot => {
             console.log(snapshot.val())
             const newContentData = snapshot.val();
             const ParsedData = ParseContent(newContentData)
