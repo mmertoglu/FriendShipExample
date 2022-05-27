@@ -33,7 +33,7 @@ const Messages = (props) => {
         })
     }, [])
 
-    const renderItem = ({item}) => <MessageCard messages={item} />
+    const renderItem = ({item}) => <MessageCard messages={item} currentUser={currentUser} />
 
     return(
         <View style={styles.container} >
