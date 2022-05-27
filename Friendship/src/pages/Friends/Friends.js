@@ -10,17 +10,18 @@ const Friends = (props) => {
     const [friendsList,setFriendList] = useState([])
     const usermail = auth().currentUser.email.split('@', 1).toString()
     useEffect(() => {
-        database().ref('users/'+usermail+'/friends/').once('value', snapshot => {
-            console.log(usermail)
-            console.log(snapshot.val())
+        database().ref('users/'+usermail+'/friends/').on('value', snapshot => {          
             const newContentData = snapshot.val();
             const ParsedData = ParseContent(newContentData)
-            console.log(ParsedData)
             setFriendList(ParsedData)
-            console.log(ParsedData)
         })
     }, [])
-    const renderItem = ({item,index}) => <FriendsCard friend={item} index={index} />
+
+    const sendMessage = (friendId) => {
+        props.navigation.navigate('MessagesScreen',{friendId:friendId})
+    }
+
+    const renderItem = ({item,index}) => <FriendsCard friend={item} index={index} sendMessage={sendMessage} />
     return(
         <View>
              <View style={styles.headercontainer} >

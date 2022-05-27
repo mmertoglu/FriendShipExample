@@ -24,6 +24,7 @@ const FriendshipRequest = (props) => {
 
     const handleAccept = (addedUserId) => {
         database().ref('users/'+usermail+'/friends/'+addedUserId).set(addedUserId)
+        database().ref('users/'+addedUserId+'/friends/'+usermail).set(usermail)
         const newTodos = addedUsers.filter(item => item.id != addedUserId)
         setAddedUsers(newTodos)
         database().ref('/users/'+usermail+'/addedyou/'+addedUserId).remove();
