@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import {View,Text, TextInput, TouchableOpacity,Image,FlatList} from 'react-native'
 import Feather from 'react-native-vector-icons/Feather'
 import IonIcons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import styles from './Messages.style'
 import database from '@react-native-firebase/database'
 import auth from '@react-native-firebase/auth'
 import ParseContent from "../../utils/ParseContent";
 import MessageCard from "../../components/MessageCard/MessageCard";
+import {launchImageLibrary} from 'react-native-image-picker'
 
 const Messages = (props) => {
+    const [image,setImage] = useState(null)
     const [message,setMessage] = React.useState('')
     const [messageList,setMessageList] = React.useState([])
     const currentUser = auth().currentUser.email.split('@',1).toString()
@@ -18,7 +21,8 @@ const Messages = (props) => {
         const MessageInfo = {
             message : message,
             user : currentUser,
-            date : new Date().toISOString()
+            date : new Date().toISOString(),
+            image : image
         }
           database().ref('messages/'+currentUser+'/'+friendId).push(MessageInfo)
           database().ref('messages/'+friendId+'/'+currentUser).push(MessageInfo)
@@ -33,6 +37,19 @@ const Messages = (props) => {
         })
     }, [])
 
+    const goPhoto = () => {
+        const options = {
+            title:'Titlee',
+            storageOptions:{
+                skipBackup:true,
+                path:'images'
+            }
+        }
+       launchImageLibrary(options, response => {
+         const path= response.assets[0].uri
+         setImage(path)
+       })
+    }
     const renderItem = ({item}) => <MessageCard messages={item} currentUser={currentUser} />
 
     return(
@@ -62,10 +79,15 @@ const Messages = (props) => {
             }
 
             <View style={styles.footer_container} >
+                <View style={styles.input_container} >
                 <TextInput 
                 value={message}
                 onChangeText={text => setMessage(text)}
                 placeholder="mesaj..." style={styles.input} />
+                <TouchableOpacity>
+                <FontAwesome name="photo" size={20} color='black' onPress={goPhoto} />
+                </TouchableOpacity>
+                </View>
                 <TouchableOpacity 
                 onPress={sendMessage}
                 style={styles.send_button} >

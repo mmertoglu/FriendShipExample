@@ -29,11 +29,11 @@ export default StyleSheet.create({
         
     },
     input: {
-        width: '85%',
+        borderRadius:20,
         backgroundColor: 'white',
-        borderRadius: 20,
-        paddingHorizontal:10,
-        elevation:8
+        width:'88%'
+        
+        
     },
     send_button: {
         backgroundColor: '#248f24',
@@ -58,5 +58,13 @@ export default StyleSheet.create({
         width: 80,
         justifyContent: 'space-between',
         alignItems: 'center',
+    },
+    input_container:{
+        flexDirection:'row',
+        backgroundColor:'white',
+        width:'85%',
+        borderRadius:20,
+        paddingLeft:10,
+        alignItems:'center'
     }
 })
