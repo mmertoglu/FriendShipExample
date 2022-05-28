@@ -22,5 +22,10 @@ export default StyleSheet.create({
         padding:10,
         alignSelf:'flex-start',
         backgroundColor:'white'
+    },
+    image:{
+        width:100,
+        height:200,
+        resizeMode:'contain'
     }
 })

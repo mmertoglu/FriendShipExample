@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import {View,Text, TextInput, TouchableOpacity,Image,FlatList} from 'react-native'
+import React, { useState,useRef } from "react";
+import {View,Text, TextInput, TouchableOpacity,Image,FlatList, KeyboardAvoidingView} from 'react-native'
 import Feather from 'react-native-vector-icons/Feather'
 import IonIcons from 'react-native-vector-icons/Ionicons'
 import Entypo from 'react-native-vector-icons/Entypo'
@@ -27,6 +27,7 @@ const Messages = (props) => {
           database().ref('messages/'+currentUser+'/'+friendId).push(MessageInfo)
           database().ref('messages/'+friendId+'/'+currentUser).push(MessageInfo)
           setMessage('')
+          setImage(null)
     }
 
     React.useEffect(() => {
@@ -46,18 +47,25 @@ const Messages = (props) => {
             }
         }
        launchImageLibrary(options, response => {
-         const path= response.assets[0].uri
-         setImage(path)
+       if(response.didCancel) {
+           console.log('user Cancelled')
+       }
+       else if (response.errorCode) {
+           console.log(errorCode0)
+       } else {
+        const path= response.assets[0].uri
+        setImage(path)
+       }
        })
     }
     const renderItem = ({item}) => <MessageCard messages={item} currentUser={currentUser} />
 
     return(
-        <View style={styles.container} >
+        <KeyboardAvoidingView style={styles.container} >
             <View style={styles.header_container} >
             
             <View style={styles.header_inner_container} >
-            <IonIcons name="arrow-back" color={'white'} size={24} />
+            <IonIcons name="arrow-back" color={'white'} size={24} onPress={() => props.navigation.goBack()} />
             <Image 
             style={styles.user_image}
             source={{uri:'https://www.linkpicture.com/q/WhatsApp-Image-2022-05-22-at-18.49.19.jpeg'}} />
@@ -71,7 +79,9 @@ const Messages = (props) => {
 
             </View>
             { messageList ? 
+            
             <FlatList
+            inverted
             data={messageList}
             renderItem={renderItem}
             /> : null
@@ -81,6 +91,7 @@ const Messages = (props) => {
             <View style={styles.footer_container} >
                 <View style={styles.input_container} >
                 <TextInput 
+                onPressIn={() => messageList.scro}
                 value={message}
                 onChangeText={text => setMessage(text)}
                 placeholder="mesaj..." style={styles.input} />
@@ -95,7 +106,7 @@ const Messages = (props) => {
                 </TouchableOpacity>
             </View>
 
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 

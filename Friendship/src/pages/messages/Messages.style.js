@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffb3'
+        backgroundColor: '#ffe9e6'
     },
     header_container: {
         backgroundColor: '#248f24',
@@ -20,11 +20,10 @@ export default StyleSheet.create({
     },
     footer_container: {
         flexDirection: 'row',
-        position: 'absolute',
-        bottom: 20,
+        marginBottom:5,
         alignItems: 'center',
-        justifyContent: 'space-between',
-        width:'90%',
+        justifyContent: 'space-around',
+        width:'100%',
         alignSelf:'center'
         
     },
@@ -42,7 +41,8 @@ export default StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 50,
         elevation:8,
-        marginLeft:5
+        marginRight:5
+        
     },
     user_image: {
         width: 40,
@@ -62,7 +62,7 @@ export default StyleSheet.create({
     input_container:{
         flexDirection:'row',
         backgroundColor:'white',
-        width:'85%',
+        width:'80%',
         borderRadius:20,
         paddingLeft:10,
         alignItems:'center'
