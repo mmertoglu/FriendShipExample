@@ -10,6 +10,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import Messages from './src/pages/messages/Messages';
 import SignScreen from './src/pages/SignScreen/SignScreen';
+import Profile from './src/pages/Profile/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ const App = () => {
         <Stack.Screen name='FriendshipRequestScreen' component={FriendshipRequest} />
         <Stack.Screen name='FriendsScreen' component={Friends} />
         <Stack.Screen name='MessagesScreen' component={Messages} />
+        <Stack.Screen name='ProfileScreen' component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
   )

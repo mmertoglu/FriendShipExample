@@ -6,6 +6,7 @@ import ParseContent from '../../utils/ParseContent'
 import FriendsCard from "../../components/FriendsCard/FriendsCard";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import styles from './Friends.style'
+import MaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons'
 const Friends = (props) => {
     const [friendsList,setFriendList] = useState([])
     const usermail = auth().currentUser.email.split('@', 1).toString()
@@ -30,6 +31,9 @@ const Friends = (props) => {
             onPress={() => props.navigation.navigate('FriendshipRequestScreen')}  />
             <FontAwesome5 name="user-friends" size={30} color='tomato' 
             onPress={() => props.navigation.navigate('FriendsScreen')}
+            />
+             <MaterialCommunity name="face-man-profile" size={30} color='gray' 
+            onPress={() => props.navigation.navigate('ProfileScreen')}
             />
             </View>
             <Text style={styles.header_text} >Friends Page</Text>

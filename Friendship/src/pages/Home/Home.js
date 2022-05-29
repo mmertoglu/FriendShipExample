@@ -6,6 +6,7 @@ import UserCard from "../../components/UserCard/UserCard";
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import auth from '@react-native-firebase/auth'
 import styles from './Home.style'
+import MaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons'
 const Home = (props) => {
     const [users, setUsers] = useState([])
     
@@ -32,6 +33,9 @@ const Home = (props) => {
             onPress={() => props.navigation.navigate('FriendshipRequestScreen',{usermail:usermail})}  />
             <FontAwesome5 name="user-friends" size={30} color='gray' 
             onPress={() => props.navigation.navigate('FriendsScreen',{usermail:usermail})}
+            />
+            <MaterialCommunity name="face-man-profile" size={30} color='gray' 
+            onPress={() => props.navigation.navigate('ProfileScreen')}
             />
             </View>
             <FlatList

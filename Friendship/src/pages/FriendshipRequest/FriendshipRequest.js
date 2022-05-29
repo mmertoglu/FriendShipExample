@@ -6,6 +6,7 @@ import auth from '@react-native-firebase/auth'
 import database from '@react-native-firebase/database'
 import ParseContent from "../../utils/ParseContent";
 import FriendRequestCard from "../../components/FriendRequestCard/FriendRequestCard";
+import MaterialCommunity from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const FriendshipRequest = (props) => {
     const [addedUsers,setAddedUsers] = React.useState([])
@@ -47,6 +48,9 @@ const FriendshipRequest = (props) => {
             />
             <FontAwesome5 name="user-friends" size={30} color='gray'
              onPress={() => props.navigation.navigate('FriendsScreen',)}
+            />
+             <MaterialCommunity name="face-man-profile" size={30} color='gray' 
+            onPress={() => props.navigation.navigate('ProfileScreen')}
             />
             </View>
             <Text>Users Added you</Text>
