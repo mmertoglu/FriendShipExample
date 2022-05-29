@@ -62,5 +62,9 @@ export default StyleSheet.create({
         left:230,
         zIndex:1
         
+    },
+    image:{
+        width:100,
+        height:100
     }
 })
